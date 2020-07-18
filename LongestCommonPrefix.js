@@ -15,6 +15,12 @@
 
 // All given inputs are in lowercase letters a-z.
 
+// ==========================================
+
+// Runtime: 88 ms, faster than 27.51% of JavaScript online submissions for Longest Common Prefix.
+// Memory Usage: 38.9 MB, less than 6.88% of JavaScript online submissions for Longest Common Prefix.
+
+// ==========================================
 // /**
 //  * @param {string[]} strs
 //  * @return {string}
