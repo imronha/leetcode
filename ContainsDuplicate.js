@@ -20,16 +20,22 @@
 //  * @return {boolean}
 //  */
 
-//Brute force, does 13/18 test cases pass
-// var containsDuplicate = function (nums) {
+//Brute force O(n^2) time
+// var containsDuplicate = function(nums) {
+//   // Loop through array
+//   // Compare first element with second element
 //   for (var i = 0; i < nums.length; i++) {
-//     for (var j = 1; j < nums.length; j++) {
-//       if (nums[i] == nums[j]) {
-//         return true;
+//       //console.log(i, nums[i])
+//       for (var j = i+1; j < nums.length; j++) {
+//           //console.log(nums);
+//           if (nums[j] == nums[i]) {
+//               //console.log(nums[i], nums[j]);
+//               return true;
+
+//           }
 //       }
-//     }
 //   }
-//   return false;
+//   return false
 // };
 
 var containsDuplicate = function (nums) {

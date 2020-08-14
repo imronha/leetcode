@@ -11,30 +11,36 @@ Clarification questions:
 (C) Constraints: Optimize
 (E) Edge Cases: Empty String, spaces, special chars, case sensitive
 
-Time Complexity: 
-Space Complexity: 
+Time Complexity: Linear O(2n) - looping through two strings
+Space Complexity: Linear O(n)
 
 Pseudocode:
 -- If strings are not same length, return false
 -- Iterate through one string
--- Add chars to dict, assign true
+-- Add chars to dict, assign value 1 or +1 if already exists
 -- Iterate through second string
--- If chars dict does not have str2 char, return false
-
+-- If chars dict has str2 char and !=0, -1
 */
 
 let isPermutation = (str1, str2) => {
-  if (str1.length != str2.length) {
+  if (str1.length !== str2.length) {
     return false;
   }
   var chars = {};
 
   for (var i = 0; i < str1.length; i++) {
-    chars[str1[i]] = true;
+    var char = str1[i];
+    if (chars[char]) {
+      chars[char]++;
+    } else {
+      chars[char] = 1;
+    }
   }
 
   for (var j = 0; j < str2.length; j++) {
-    if (!chars[str2[j]]) {
+    if (chars[str2[j]] && chars[str2[j]] !== 0) {
+      chars[str2[j]]--;
+    } else {
       return false;
     }
   }
@@ -79,5 +85,12 @@ console.log(
     "and" +
     "'star'" +
     " are permutations.",
+  "\n",
+  (isPermutation("baaab", "bbbaa") === false) +
+    ": " +
+    "'baaab'" +
+    "and" +
+    "'bbbaa'" +
+    " are not permutations.",
   "\n"
 );
