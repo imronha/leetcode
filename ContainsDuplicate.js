@@ -19,12 +19,26 @@
 //  * @param {number[]} nums
 //  * @return {boolean}
 //  */
+
+//Brute force, does 13/18 test cases pass
+// var containsDuplicate = function (nums) {
+//   for (var i = 0; i < nums.length; i++) {
+//     for (var j = 1; j < nums.length; j++) {
+//       if (nums[i] == nums[j]) {
+//         return true;
+//       }
+//     }
+//   }
+//   return false;
+// };
+
 var containsDuplicate = function (nums) {
+  // Sort array
+  // Interate through array, checking the current num and current+1 num
+  nums.sort();
   for (var i = 0; i < nums.length; i++) {
-    for (var j = 1; j < nums.length; j++) {
-      if (nums[i] == nums[j]) {
-        return true;
-      }
+    if (nums[i] == nums[i + 1]) {
+      return true;
     }
   }
   return false;

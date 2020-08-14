@@ -5,13 +5,13 @@ Implement an algorithm to deternmine if a string has all unique characters. What
 Clarification questions:
 -- Is the string ASCII or UNICODE?
 
-Input: String
-Output: Boolean
-Constraints: No additional data structures
-Edge Cases: Empty String, spaces, special chars
+(I) Input: String
+(O) Output: Boolean
+(C) Constraints: No additional data structures
+(E) Edge Cases: Empty String, spaces, special chars
 
-Time Complexity:
-Space Complexity:
+Time Complexity: Linear O(n)
+Space Complexity: Linear O(n)
 
 Pseudocode:
 -- Create dictionary to store chars
@@ -22,6 +22,7 @@ Pseudocode:
 
 */
 
+// Solution WITH data structure
 let isUnique = (str) => {
   let chars = {};
   for (var i = 0; i < str.length; i++) {
@@ -36,8 +37,10 @@ let isUnique = (str) => {
 };
 
 // Test Cases
-console.log("'k'" + " is unique: " + (isUnique("k") === true));
-console.log("''" + " is unique: " + (isUnique("") === true));
-console.log("'cat'" + " is unique: " + (isUnique("cat") === true));
-console.log("'sas'" + " is not unique: " + (isUnique("sas") === false));
-console.log("'pokemon'" + " is not unique: " + (isUnique("pokemon") === false));
+console.log(
+  "'k'" + " is unique: " + (isUnique("k") === true),
+  "''" + " is unique: " + (isUnique("") === true),
+  "'cat'" + " is unique: " + (isUnique("cat") === true),
+  "'sas'" + " is not unique: " + (isUnique("sas") === false),
+  "'pokemon'" + " is not unique: " + (isUnique("pokemon") === false)
+);
