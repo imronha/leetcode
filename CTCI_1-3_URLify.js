@@ -18,7 +18,10 @@ Time Complexity:
 Space Complexity: 
 
 Pseudocode:
--- 
+-- Create output string, character count, and space count
+-- First iteration - count non-space chars
+-- Second iteration - if char == ' ', concat '%20' to output, else concat the char
+-- Check for extra spaces (if num arg > space) and add '%20' to the end of outputstr
 */
 
 let URLify = (str, len = str.length) => {
