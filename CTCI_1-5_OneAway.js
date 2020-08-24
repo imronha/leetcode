@@ -24,8 +24,8 @@ EXAMPLE:
 (C) Constraints: Optimize
 (E) Edge Cases: Empty String
 
-Time Complexity: 
-Space Complexity: 
+Time Complexity: O(n) linear
+Space Complexity: constant
 
 Pseudocode:
 -- If inserted, str1's current char should equal str2's next char
