@@ -18,52 +18,72 @@
 // Design the array to be circular, such that the final stack may start at the end of the array and wrap around to the beginning
 
 var ThreeInOne = function () {
+  // Create array
   this.container = [];
-  this.middleBottom = 0;
+
+  // Create pointers for the other two stacks
   this.middleTop = 0;
+  this.middleBottom = 0;
 };
 
+// Push(value) for all three stacks
 ThreeInOne.prototype.push1 = function (value) {
+  // Add value to the front of the array
   this.container.unshift(value);
+
+  // Increment pointers
   this.middleBottom++;
   this.middleTop++;
 };
 
 ThreeInOne.prototype.push2 = function (value) {
+  // Splice(index to insert at, delete count, value to insert)
   this.container.splice(this.middleTop, 0, value);
+
+  // Increment the middle stacks pointer because we inserted a value at this.middleTop index
   this.middleTop++;
 };
 
 ThreeInOne.prototype.push3 = function (value) {
+  // Add value to the end of array
   this.container.push(value);
 };
 
+// Pop() for all three stacks
 ThreeInOne.prototype.pop1 = function () {
+  // Return undefined if empty
   if (this.isEmpty1()) {
     return undefined;
   }
-  var answer = this.container.shift();
+
+  // Shift removes first element in array and returns it
+  var element = this.container.shift();
+
+  // Decrement pointers when first item is removed from array
   if (this.middleBottom > 0) {
     this.middleBottom--;
     this.middleTop--;
   }
-  return answer;
+  return element;
 };
 
 ThreeInOne.prototype.pop2 = function () {
+  // Return undefined if empty
   if (this.isEmpty2()) {
     return undefined;
   }
 
-  var answer = this.container[this.middleTop - 1];
+  // Splice out the last item in the middle stack
+  var element = this.container[this.middleTop - 1];
   this.container.splice(this.middleTop - 1, 1);
   if (this.middleBottom < this.middleTop) {
     this.middleTop--;
   }
-  return answer;
+  return element;
 };
 
 ThreeInOne.prototype.pop3 = function (value) {
+  // Pop last item in array (last item in last stack)
   if (this.isEmpty3()) {
     return undefined;
   }
@@ -71,29 +91,37 @@ ThreeInOne.prototype.pop3 = function (value) {
   return this.container.pop(value);
 };
 
+// Peek() for all three stacks
 ThreeInOne.prototype.peek1 = function () {
+  // Returns first item in array (first item in first stack if not empty)
   return this.isEmpty1() ? undefined : this.container[0];
 };
 
 ThreeInOne.prototype.peek2 = function () {
+  // Returns 'top' item in middle stack if not empty
   return this.isEmpty2() ? undefined : this.container[this.middleTop - 1];
 };
 
 ThreeInOne.prototype.peek3 = function () {
+  // Returns last item in array (last item in last stack) if not empty
   return this.isEmpty3()
     ? undefined
     : this.container[this.container.length - 1];
 };
 
+// .isEmpty() for all three stacks
 ThreeInOne.prototype.isEmpty1 = function () {
+  // If middleBottom is 0 (not incremented) that means first stack is empty
   return this.middleBottom === 0;
 };
 
 ThreeInOne.prototype.isEmpty2 = function () {
+  // If middleTop and middleBottom are the same number middle stack is empty
   return this.middleBottom === this.middleTop;
 };
 
 ThreeInOne.prototype.isEmpty3 = function () {
+  // If middleTop is the same as the array length, then last stack is empty
   return this.middleTop === this.container.length;
 };
 
