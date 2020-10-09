@@ -18,15 +18,13 @@
 # (C) Constraints: Optimize
 # (E) Edge Cases: Empty String, spaces in front / middle / end, special chars, capitolization
 
-# Time Complexity:
-# Space Complexity:
+# Time Complexity: O(n), iterating string once
+# Space Complexity: O(n), used a dictionary
 
 # Pseudocode:
 # -- Check length of str
 # -- Create dict to store chars and counts
 # -- Check dict depending on length of str (odd = only 1 odd # char, even = even # char only)
-
-# Normalize - lowercase and get rid of strings
 
 
 def isPalindromePerm(inputStr):

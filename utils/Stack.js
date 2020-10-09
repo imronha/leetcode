@@ -34,10 +34,6 @@ class Stack {
     if (this.isEmpty()) return null;
     return this._data[this.size() - 1];
   }
-
-  _toArray() {
-    return this._data;
-  }
 }
 
 module.exports = Stack;
