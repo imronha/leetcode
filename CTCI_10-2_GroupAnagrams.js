@@ -38,12 +38,16 @@ var groupAnagrams = (strArr) => {
     hash[chars] ? hash[chars].push(str) : (hash[chars] = [str]);
 
     // Hash now has sortedChars : [string(s)]
-    const keys = Object.keys(hash);
-    const values = keys.map(function (val) {
-      return hash[val];
-    });
-    return values;
+    // Get keys from hash (the sorted chars)
+    // Get values from hash using the keys
+    // const values = Object.values(hash);
   });
+  const keys = Object.keys(hash);
+  const values = keys.map(function (val) {
+    return hash[val];
+  });
+
+  return values.sort();
 
   // if (strArr === undefined) {
   //     return 'where is your anagram?';
