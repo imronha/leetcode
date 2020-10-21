@@ -31,8 +31,10 @@ let isPermutation = (str1, str2) => {
   for (var i = 0; i < str1.length; i++) {
     var char = str1[i];
     if (chars[char]) {
+      // If char is in chars{}, +1
       chars[char]++;
     } else {
+      // If char is not in char{}, set it = 1
       chars[char] = 1;
     }
   }
