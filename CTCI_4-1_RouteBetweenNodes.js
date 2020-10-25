@@ -19,14 +19,14 @@ Hint #
 Pseudocode:
 -- 
 */
-class Graph {
+class Node {
   constructor(data, children = []) {
     this.data = data;
     this.children = children;
-    this.id = ++Graph.id;
+    this.id = ++Node.id;
   }
 }
-Graph.id = 0;
+Node.id = 0;
 
 function routeBetweenNodes(start, end) {
   if (!start || !end) {
@@ -57,16 +57,16 @@ function routeBetweenNodes(start, end) {
 /* Tests */
 
 // Create new nodes
-let node1 = new Graph(1);
-let node2 = new Graph(2);
-let node3 = new Graph(3);
-let node4 = new Graph(4);
-let node5 = new Graph(5);
-let node6 = new Graph(6);
-let node7 = new Graph(7);
-let node8 = new Graph(8);
-let node9 = new Graph(9);
-let node10 = new Graph(10);
+let node1 = new Node(1);
+let node2 = new Node(2);
+let node3 = new Node(3);
+let node4 = new Node(4);
+let node5 = new Node(5);
+let node6 = new Node(6);
+let node7 = new Node(7);
+let node8 = new Node(8);
+let node9 = new Node(9);
+let node10 = new Node(10);
 
 // Assign children to nodes
 node1.children.push(node2, node3, node6);
