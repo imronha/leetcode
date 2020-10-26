@@ -28,8 +28,8 @@ Pseudocode
 */
 
 class TreeNode {
-  constructor(data, left = null, right = null) {
-    this.data = data;
+  constructor(val, left = null, right = null) {
+    this.val = val;
     this.left = left;
     this.right = right;
   }
