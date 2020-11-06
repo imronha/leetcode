@@ -1,7 +1,7 @@
 class Node {
-  constructor(value) {
+  constructor(value, next = null) {
     this.value = value;
-    this.next = null;
+    this.next = next;
   }
 }
 
@@ -21,6 +21,10 @@ class LinkedList {
       this.tail.next = node;
       this.tail = node;
     }
+  }
+
+  delete(node) {
+    let next = node.next;
   }
 
   prepend(value) {

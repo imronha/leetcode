@@ -28,16 +28,16 @@ class Node {
 }
 
 function kthToLastElement(node, k = 0) {
-  // Set fast and slow pointers (runner, kthnode)
+  // Set fast and slow pointers (runner, slower)
   let runner = node;
-  let kthNode = node;
+  let slower = node;
 
   // Edge case: return null if theres no linked list or k==0
   if (!node || k === 0) {
     return null;
   }
 
-  // Move runner k times so that kthnode and runner are now k nodes apart
+  // Move runner k times so that slower and runner are now k nodes apart
   while (runner && k > 0) {
     runner = runner.next;
     k--;
@@ -45,12 +45,12 @@ function kthToLastElement(node, k = 0) {
 
   // Move both pointers until runner == null (reaches the end of linked list)
   while (runner) {
-    kthNode = kthNode.next;
+    slower = slower.next;
     runner = runner.next;
   }
 
-  // Return kthnode
-  return kthNode;
+  // Return slower
+  return slower;
 }
 
 node = new Node("1");
