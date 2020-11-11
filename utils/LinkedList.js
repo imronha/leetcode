@@ -265,7 +265,7 @@ class LinkedList {
     // Get previous node. If index out of range, getLast
     const previousNode = this.getAt(index - 1) || this.getLast();
     // Create new node with previous.next as newNode's .next
-    const newNode = new Node(data, previous.next);
+    const newNode = new Node(data, previousNode.next);
     previousNode.next = newNode;
   }
 }
