@@ -11,11 +11,11 @@ Interface:
 */
 class Stack {
   constructor() {
-    this._data = [];
+    this.data = [];
   }
 
   size() {
-    return this._data.length;
+    return this.data.length;
   }
 
   isEmpty() {
@@ -23,16 +23,17 @@ class Stack {
   }
 
   push(value) {
-    this._data.push(value);
+    this.data.push(value);
   }
 
   pop() {
-    return this._data.pop();
+    return this.data.pop();
   }
 
   peek() {
     if (this.isEmpty()) return null;
-    return this._data[this.size() - 1];
+    return this.data[this.size() - 1];
+    // return this.data[this.data.length-1]
   }
 }
 
