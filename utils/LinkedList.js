@@ -248,4 +248,24 @@ class LinkedList {
     }
     previous.next = previous.next.next;
   }
+
+  insertAt(data, index) {
+    // If list is empty
+    if (!this.head) {
+      this.head = new Node(data);
+      return;
+    }
+
+    // If only 1 node
+    if (index === 0) {
+      this.head = new Node(data, this.head);
+      return;
+    }
+
+    // Get previous node. If index out of range, getLast
+    const previousNode = this.getAt(index - 1) || this.getLast();
+    // Create new node with previous.next as newNode's .next
+    const newNode = new Node(data, previous.next);
+    previousNode.next = newNode;
+  }
 }

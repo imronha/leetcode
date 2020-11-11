@@ -108,3 +108,33 @@ s.pop();
 s.pop();
 console.log(s.isEmpty(), true);
 console.log(s.min(), undefined);
+
+class minStack {
+  constructor() {
+    this.stack = [];
+    this.minStack = [];
+  }
+
+  push(val) {
+    this.stack.push(val);
+    if (this.minStack.length === 0) {
+      this.minStack.push(val);
+      return;
+    }
+    if (this.min() >= val) {
+      this.minStack.push(val);
+    }
+  }
+
+  pop() {
+    const val = this.stack.pop();
+    if (this.min() === val) {
+      this.minStack.pop();
+    }
+    return val;
+  }
+
+  min() {
+    return this.minStack[this.minStack.length - 1];
+  }
+}
