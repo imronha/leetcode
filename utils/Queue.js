@@ -46,3 +46,21 @@ module.exports = Queue;
 // console.log(q.remove(), 'c');
 // console.log(q.isEmpty(), true);
 // console.log(q._toArray());
+
+// class Queue {
+//   constructor() {
+//     this.container = [];
+//   }
+
+//   add(val) {
+//     this.container.unshift(val);
+//   }
+
+//   remove() {
+//     return this.container.pop();
+//   }
+
+//   peek() {
+//     return this.container[this.container.length-1]
+//   }
+// }
