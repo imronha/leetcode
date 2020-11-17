@@ -1,6 +1,32 @@
-var Tree = function (value) {
-  this.value = value;
-  this.children = [];
-};
+class Node {
+  constructor(data) {
+    this.data = data;
+    this.children = [];
+  }
 
-module.exports = Tree;
+  add(data) {
+    // Create new node and push to current nodes children
+    this.children.push(new Node(data));
+  }
+
+  remove(data) {
+    // Filter through children and check if nodes match data
+    // Filter does not modify original array so do it manually
+    this.children = this.children.filter((node) => {
+      return node.data !== data;
+    });
+  }
+}
+
+class Tree {
+  constructor(root = null) {
+    this.root = root;
+  }
+}
+
+// var Tree = function (value) {
+//   this.value = value;
+//   this.children = [];
+// };
+
+// module.exports = Tree;
