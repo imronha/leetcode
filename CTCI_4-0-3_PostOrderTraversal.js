@@ -55,30 +55,45 @@ Recursive solution is trivial, could you do it iteratively?
  */
 
 class TreeNode {
-  constructor(val, left = null, right = null) {
-    this.val = val;
+  constructor(data, left = null, right = null) {
+    this.data = data;
     this.left = left;
     this.right = right;
   }
 }
 
-var postorderTraversal = function (root) {
-  if (!root) return [];
+function preOrderTraversal(root) {
+  // If the root is null, return empty array
+  if (root == null) {
+    return [];
+  }
 
-  var result = [];
-  var stack = [root];
+  const stack = [];
+  const result = [];
 
-  while (stack.length) {
-    var currentNode = stack.pop();
-    // insert the node val to the front
-    result.unshift(currentNode.val);
+  stack.push(root);
 
-    if (currentNode.left) stack.push(currentNode.left); // left first
-    if (currentNode.right) stack.push(currentNode.right); // then right
+  // Keep iterating as long as there are still items in stack
+  while (stack.length > 0) {
+    let current = stack.pop();
+    result.push(current.data);
+
+    if (current.right) stack.push(current.right);
+    if (current.left) stack.push(current.left);
   }
 
   return result;
-};
+}
+
+function preOrderTraversalRecursion(root) {
+  if (!root) {
+    return null;
+  }
+
+  console.log(root.data);
+  preOrderTraversalRecursion(root.left);
+  preOrderTraversalRecursion(root.right);
+}
 
 /*
        10
@@ -109,5 +124,7 @@ let node6 = new TreeNode(6);
 node2.left = node5;
 node2.right = node6;
 
-console.log("postOrderTraversal", postorderTraversal(tree));
-// Returns [3, 4, 1, 5, 6, 2, 10]
+console.log("preOrderTraversal", preOrderTraversal(tree));
+console.log("preOrderTraversalRecursion", preOrderTraversalRecursion(tree));
+
+// Returns [10, 1, 3, 4, 2, 5, 6]

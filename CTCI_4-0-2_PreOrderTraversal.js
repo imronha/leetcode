@@ -28,8 +28,8 @@ Pseudocode
 */
 
 class TreeNode {
-  constructor(val, left = null, right = null) {
-    this.val = val;
+  constructor(data, left = null, right = null) {
+    this.data = data;
     this.left = left;
     this.right = right;
   }
@@ -49,7 +49,7 @@ var preorderTraversal = function (root) {
   // Keep iterating as long as there are still items in stack
   while (stack.length > 0) {
     let current = stack.pop();
-    result.push(current.val);
+    result.push(current.data);
 
     if (current.right) stack.push(current.right);
     if (current.left) stack.push(current.left);
