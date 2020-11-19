@@ -29,3 +29,26 @@ class Node {
     this.children.push(new Node(data));
   }
 }
+
+function levelWidth(root) {
+  const arr = [root, "end"];
+  const counters = [0];
+
+  while (arr.length > 1) {
+    // Get the node to process
+    const node = arr.shift();
+
+    // If node === 'end', push back on to array
+    if (node === "end") {
+      counters.push(0);
+      arr.push("end");
+    } else {
+      // If we actually have a node, push children to arr
+      arr.push(...node.children);
+
+      // Increment counter (the last counter elem in array)
+      counters[counters.length - 1]++;
+    }
+  }
+  return counters;
+}
