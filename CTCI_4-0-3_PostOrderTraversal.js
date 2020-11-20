@@ -62,37 +62,32 @@ class TreeNode {
   }
 }
 
-function preOrderTraversal(root) {
-  // If the root is null, return empty array
-  if (root == null) {
-    return [];
-  }
+function postOrderTraversal(root) {
+  if (!root) return [];
 
-  const stack = [];
-  const result = [];
+  var result = [];
+  var stack = [root];
 
-  stack.push(root);
+  while (stack.length) {
+    var currentNode = stack.pop();
+    // insert the node val to the front
+    result.unshift(currentNode.data);
 
-  // Keep iterating as long as there are still items in stack
-  while (stack.length > 0) {
-    let current = stack.pop();
-    result.push(current.data);
-
-    if (current.right) stack.push(current.right);
-    if (current.left) stack.push(current.left);
+    if (currentNode.left) stack.push(currentNode.left); // left first
+    if (currentNode.right) stack.push(currentNode.right); // then right
   }
 
   return result;
 }
 
-function preOrderTraversalRecursion(root) {
+function postOrderTraversalRecursion(root) {
   if (!root) {
     return null;
   }
 
+  postOrderTraversalRecursion(root.left);
+  postOrderTraversalRecursion(root.right);
   console.log(root.data);
-  preOrderTraversalRecursion(root.left);
-  preOrderTraversalRecursion(root.right);
 }
 
 /*
@@ -105,12 +100,12 @@ function preOrderTraversalRecursion(root) {
   3   4   5   6
 
 */
-let tree = new TreeNode(10);
+let root = new TreeNode(10);
 let node1 = new TreeNode(1);
 let node2 = new TreeNode(2);
 
-tree.left = node1;
-tree.right = node2;
+root.left = node1;
+root.right = node2;
 
 let node3 = new TreeNode(3);
 let node4 = new TreeNode(4);
@@ -124,7 +119,7 @@ let node6 = new TreeNode(6);
 node2.left = node5;
 node2.right = node6;
 
-console.log("preOrderTraversal", preOrderTraversal(tree));
-console.log("preOrderTraversalRecursion", preOrderTraversalRecursion(tree));
+console.log("postOrderTraversal", postOrderTraversal(root));
+console.log("postOrderTraversalRecursion", postOrderTraversalRecursion(root));
 
-// Returns [10, 1, 3, 4, 2, 5, 6]
+// Returns [3, 4, 1, 5, 6, 2, 10]

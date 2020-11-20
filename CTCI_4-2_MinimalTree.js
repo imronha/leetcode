@@ -21,3 +21,28 @@ Hint # 116
 Pseudocode:
 -- 
 */
+
+class Node {
+  constructor(data, left = null, right = null) {
+    this.data = data;
+    this.left = left;
+    this.right = right;
+  }
+}
+
+function minimalTree(arr, start = 0, end = arr.length - 1) {
+  if (start > end) {
+    return null;
+  }
+
+  const middle = Math.floor((end + start) / 2);
+
+  const node = new Node(arr[middle]);
+
+  node.left = minimalTree(arr, start, middle - 1);
+  node.right = minimalTree(arr, middle + 1, end);
+
+  return node;
+}
+
+console.log(minimalTree([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]));

@@ -35,7 +35,7 @@ class TreeNode {
   }
 }
 
-var preorderTraversal = function (root) {
+function preOrderTraversal(root) {
   // If the root is null, return empty array
   if (root == null) {
     return [];
@@ -56,7 +56,17 @@ var preorderTraversal = function (root) {
   }
 
   return result;
-};
+}
+
+function preOrderTraversalRecursion(root) {
+  if (!root) {
+    return null;
+  }
+
+  console.log(root.data);
+  preOrderTraversalRecursion(root.left);
+  preOrderTraversalRecursion(root.right);
+}
 
 /*
        10
@@ -87,5 +97,7 @@ let node6 = new TreeNode(6);
 node2.left = node5;
 node2.right = node6;
 
-console.log("preOrderTraversal", preorderTraversal(tree));
+console.log("preOrderTraversal", preOrderTraversal(tree));
+console.log("preOrderTraversalRecursion", preOrderTraversalRecursion(tree));
+
 // Returns [10, 1, 3, 4, 2, 5, 6]
