@@ -23,31 +23,27 @@ class Node {
   constructor(data, children = []) {
     this.data = data;
     this.children = children;
-    this.id = ++Node.id;
   }
 }
-Node.id = 0;
 
 function routeBetweenNodes(start, end) {
   if (!start || !end) {
     return false;
   }
 
-  const visitedNodes = {}; // to store visited nodes
+  const visitedNodes = new Set();
   const queue = [start];
-  visitedNodes[start.id] = true;
+  visitedNodes.add(start);
 
   while (queue.length) {
     const processNode = queue.shift();
-
     for (let child of processNode.children) {
       if (child === end) {
         return true;
       }
-
-      if (!visitedNodes[child.id]) {
+      if (!visitedNodes.has(child)) {
         queue.push(child);
-        visitedNodes[child.id] = true;
+        visitedNodes.add(child);
       }
     }
   }
