@@ -42,3 +42,20 @@ class Graph {
     delete this.adjacencyList[vertex];
   }
 }
+
+/* 
+Traversing a Graph using BFS
+
+Psuedocode:
+- initialize an empty queue, 'results' array, and 'visited' map
+- add the starting vertext to the queue and visted map
+- while queue is not empty
+    - dequeue and store current vertex
+    - push current vertext to result array
+    - iterate through current vertex's adjacency list
+        - for each adj vertex, if the vertex is not visited
+            - add vertex to visited map
+            - enqueue vertex
+- return result array
+
+*/
