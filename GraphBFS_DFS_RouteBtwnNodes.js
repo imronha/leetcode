@@ -47,14 +47,14 @@ graph.addEdges(11, 14);
 
 console.log(graph);
 
-const dfs = (graph, start, fn, visited = {}) => {
+const dfsRecursive = (graph, start, fn, visited = {}) => {
   const nodes = graph.nodes;
   fn(start);
   visited[start] = true;
 
   for (const neighbor of nodes[start]) {
     if (!visited[neighbor]) {
-      dfs(graph, neighbor, fn, visited);
+      dfsRecursive(graph, neighbor, fn, visited);
     }
   }
 };
@@ -80,7 +80,7 @@ const bfs = (graph, start, fn) => {
 
 const log = (val) => console.log(val);
 
-//dfs(graph, 1, log);
+//dfsRecursive(graph, 1, log);
 //bfs(graph, 1, log);
 
 // Route between two nodes
