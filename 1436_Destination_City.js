@@ -2,7 +2,6 @@
 
 It is guaranteed that the graph of paths forms a line without any loop, therefore, there will be exactly one destination city.
 
- 
 
 Example 1:
 
