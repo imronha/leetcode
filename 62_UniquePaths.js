@@ -39,6 +39,18 @@ It's guaranteed that the answer will be less than or equal to 2 * 109.
 
 */
 
+// Brute force
+// Time: O(2^m+n)
+// Space: 0(n+m)
+var uniquePaths = function (m, n) {
+  if (m === 1 && n === 1) return 1;
+  if (m === 0 || n === 0) return 0;
+  return uniquePaths(m - 1, n) + uniquePaths(m, n - 1);
+};
+
+// Optimized with memoization
+// Time: O(m*n)
+// Space: O(m*n)
 var uniquePaths = function (m, n, cache = {}) {
   const key = m + "," + n;
   // Check if args are in cache
