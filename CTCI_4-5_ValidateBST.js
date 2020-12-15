@@ -23,3 +23,17 @@ Hint # 128
 Pseudocode:
 -- 
 */
+
+function validateBST_1(node) {
+  if (!node) return true;
+
+  if (node.parent) {
+    if (node.parent.left === node) {
+      if (node.value > node.parent.value) return false;
+    } else if (node.parent.right === node) {
+      if (node.value <= node.parent.value) return false;
+    }
+  }
+
+  return validateBST_1(node.left) && validateBST_1(node.right);
+}
