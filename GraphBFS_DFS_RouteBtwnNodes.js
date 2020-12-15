@@ -59,6 +59,18 @@ const dfsRecursive = (graph, start, fn, visited = {}) => {
   }
 };
 
+const dfs = (graph, start, fn, visited = {}) => {
+  const nodes = graph.nodes;
+  fn(start);
+  visited[start] = true;
+
+  for (const neighbor of nodes[start]) {
+    if (!visited[neighbor]) {
+      dfsRecursive(graph, neighbor, fn, visited);
+    }
+  }
+};
+
 const bfs = (graph, start, fn) => {
   const nodes = graph.nodes;
   const q = [start];
