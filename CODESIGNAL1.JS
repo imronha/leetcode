@@ -69,11 +69,16 @@ function codingScoreReportPercent(scores) {
     }
   }
   //console.log(scoreDict)
+  // obect poor: 1, good: 2, elite: 1
 
   var result = [];
   var sorted = Object.entries(scoreDict).sort((a, b) => b[1] - a[1]);
+  // good 50%
+  // poor 25%
+  // elite 25%
   // console.log(sorted)
 
+  //use number.toFixed(2) to round to 2 decimal places
   for (var i = 0; i < sorted.length; i++) {
     let res =
       sorted[i][0] + ": " + (sorted[i][1] / scores.length) * 100 + ".00%";

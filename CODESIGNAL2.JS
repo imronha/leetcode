@@ -78,6 +78,7 @@ function createRequestQueue() {
         resolve,
         reject,
       });
+      
     });
   };
 
