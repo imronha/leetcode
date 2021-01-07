@@ -36,3 +36,8 @@ n == nums.length
 All the numbers of nums are unique.
 
 */
+
+var missingNumber = function(nums) {
+    nums.sort();
+    
+};
