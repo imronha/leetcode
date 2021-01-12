@@ -79,49 +79,51 @@ https://visualgo.net/bn/sorting
 3. JS Code:
 */
 
-var items = [5,3,7,6,2,9];
-function swap(items, leftIndex, rightIndex){
-    var temp = items[leftIndex];
-    items[leftIndex] = items[rightIndex];
-    items[rightIndex] = temp;
-}
-function partition(items, left, right) {
-    var pivot   = items[Math.floor((right + left) / 2)], //middle element
-        i       = left, //left pointer
-        j       = right; //right pointer
-    while (i <= j) {
-        while (items[i] < pivot) {
-            i++;
-        }
-        while (items[j] > pivot) {
-            j--;
-        }
-        if (i <= j) {
-            swap(items, i, j); //sawpping two elements
-            i++;
-            j--;
-        }
+const swap = (nums, leftIndex, rightIndex) => {
+    var temp = nums[leftIndex];
+    nums[leftIndex] = nums[rightIndex];
+    nums[rightIndex] = temp;
+  }
+  
+  const partition = (nums, left, right) => {
+    var pivot = nums[Math.floor((right + left) /2)];
+    while(left <= right){
+      while(nums[left] < pivot) {
+        left++;
+      }
+      while(nums[right] > pivot){
+        right--;
+      }
+      if(left <= right){
+        swap(nums, left, right);
+        left++;
+        right--;
+      }
     }
-    return i;
-}
-
-function quickSort(items, left, right) {
+    return left; // return index for quicksort
+  }
+  
+  const quickSort = (nums, left, right) => {
     var index;
-    if (items.length > 1) {
-        index = partition(items, left, right); //index returned from partition
-        if (left < index - 1) { //more elements on the left side of the pivot
-            quickSort(items, left, index - 1);
-        }
-        if (index < right) { //more elements on the right side of the pivot
-            quickSort(items, index, right);
-        }
+    if (nums.length > 1) {
+      // Get index from partition function
+      index = partition(nums, left, right);
+      if (left < index -1 ) {
+        // More nums on the left side of partition
+        quickSort(nums, left, index -1);
+      }
+      if (index < right) {
+        // More nums on the right side of partition
+        quickSort(nums, index, right)
+      }
     }
-    return items;
-}
-// first call to quick sort
-var sortedArray = quickSort(items, 0, items.length - 1);
-console.log(sortedArray); //prints [2,3,5,6,7,9]
-
+  
+    return nums;
+  }
+  
+  
+  var nums = [5,3,7,6,2,9];
+  console.log(quickSort(nums, 0, nums.length-1));
 /*
 =============================================================================
 Merge Sort
